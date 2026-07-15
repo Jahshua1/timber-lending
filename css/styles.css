@@ -313,8 +313,9 @@ h3 { font-size: 1.15rem; margin-bottom: 8px; }
 
 /* ---------- Programs ---------- */
 .programs { background: var(--pine-alt); }
+.programs-intro { color: var(--bark); max-width: 56ch; font-size: 1.02rem; }
 .programs-grid {
-  margin-top: 40px;
+  margin-top: 32px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;

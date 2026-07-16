@@ -435,6 +435,7 @@ h3 { font-size: 1.15rem; margin-bottom: 8px; }
   gap: 24px;
 }
 @media (max-width: 800px) { .team-grid { grid-template-columns: 1fr; max-width: 380px; } }
+.team-grid-single { grid-template-columns: none; max-width: 380px; }
 .team-card { text-align: left; }
 .team-badge {
   width: 56px;

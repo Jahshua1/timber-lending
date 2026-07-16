@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jahshua1.github.io/timber-lending/sitemap.xml

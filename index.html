@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Timber Lending — Real Estate Investor Loans in Raleigh, NC</title>
-<meta name="description" content="DSCR, hard money, fix &amp; flip, bridge, and construction loans for real estate investors. Approved on the deal, not your paycheck. Raleigh, NC — lending nationwide.">
+<meta name="description" content="DSCR, hard money, fix &amp; flip &amp; bridge loans for real estate investors. Approved on the deal, not your paycheck. Raleigh, NC &mdash; funding nationwide.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://timberlending.com/">
 <meta name="theme-color" content="#2b1d13">
@@ -15,6 +15,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Timber Lending">
+<meta property="og:locale" content="en_US">
 <meta property="og:title" content="Timber Lending — Real Estate Investor Loans in Raleigh, NC">
 <meta property="og:description" content="DSCR, hard money, fix & flip, bridge, and construction loans for real estate investors. Approved on the deal, not your paycheck.">
 <meta property="og:url" content="https://timberlending.com/">
@@ -116,6 +117,15 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://timberlending.com/" }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -144,7 +154,7 @@
 
     <div class="header-actions">
       <a href="tel:9193952411" class="header-phone">919&#8209;395&#8209;2411</a>
-      <a href="#contact" class="btn btn-primary btn-sm btn-apply"><span class="btn-full">Get Pre-Qualified</span><span class="btn-short">Apply</span></a>
+      <a href="#contact" class="btn btn-primary btn-sm btn-apply"><span class="btn-full">Get Pre-Qualified</span><span class="btn-short">Apply</span><svg viewBox="0 0 14 14" fill="none" width="12" height="12" class="btn-arrow" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation menu">
         <span></span><span></span><span></span>
       </button>
@@ -159,11 +169,11 @@
     <div class="hero-grid-bg" aria-hidden="true"></div>
     <div class="container hero-inner">
       <div class="hero-copy">
-        <p class="eyebrow">Investment Property Loans &middot; Not for Primary Homes</p>
+        <p class="eyebrow">Raleigh, NC &middot; Funding Investors Nationwide</p>
         <h1>Loans for real&nbsp;estate investors.</h1>
         <p class="hero-lede">Bank said no? We fund DSCR, bridge, and hard money loans on rental and investment properties — approved on the deal, not your paycheck. No W-2 required.</p>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary btn-apply">Get Pre-Qualified</a>
+          <a href="#contact" class="btn btn-primary btn-apply">Get Pre-Qualified<svg viewBox="0 0 14 14" fill="none" width="13" height="13" class="btn-arrow" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
           <a href="#programs" class="btn btn-secondary">See Loan Programs</a>
         </div>
         <p class="hero-trust">
@@ -483,48 +493,127 @@
         </dl>
       </div>
 
-      <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
         <input type="hidden" name="access_key" value="ed79c13b-c08c-4420-9292-2c9199e177c3">
-        <input type="hidden" name="subject" value="New inquiry from Timber Lending website">
+        <input type="hidden" name="subject" value="New application from Timber Lending website">
         <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" autocomplete="off">
         <input type="hidden" name="form_loaded_at" id="form_loaded_at" value="">
 
-        <label for="name">Full Name</label>
-        <input type="text" id="name" name="name" autocomplete="name" required>
+        <div class="wizard-progress" aria-hidden="true"><div class="wizard-progress-fill" id="wizardProgressFill"></div></div>
+        <p class="wizard-step-label" id="wizardStepLabel">Step 1 of 4</p>
 
-        <div class="form-row">
-          <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" autocomplete="email" required>
+        <div class="wizard-step active" data-step="1">
+          <p class="wizard-step-title">What are you financing?</p>
+          <label for="loan_type">Loan Program</label>
+          <select id="loan_type" name="loan_type" required>
+            <option value="" disabled selected>Select the program that fits your deal</option>
+            <option>DSCR Loans</option>
+            <option>Bank Statement Loans</option>
+            <option>Self-Employed Investor Programs</option>
+            <option>Portfolio &amp; High-Net-Worth Programs</option>
+            <option>Hard Money Loans</option>
+            <option>Fix &amp; Flip Loans</option>
+            <option>Bridge Loans</option>
+            <option>Cash-Out Refinancing</option>
+            <option>Seller Carry-Back Financing</option>
+            <option>Construction Loans</option>
+            <option>Commercial Loans</option>
+            <option>No-Ratio &amp; Distressed Asset Rescue</option>
+            <option>Not sure yet</option>
+          </select>
+          <label for="purpose">Purchase or Refinance</label>
+          <select id="purpose" name="purpose" required>
+            <option value="" disabled selected>Select one</option>
+            <option>Purchase</option>
+            <option>Refinance</option>
+            <option>Cash-Out Refinance</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+
+        <div class="wizard-step" data-step="2">
+          <p class="wizard-step-title">Tell us about the property</p>
+          <div class="form-row">
+            <div>
+              <label for="property_state">Property State</label>
+              <input type="text" id="property_state" name="property_state" placeholder="e.g. NC" required>
+            </div>
+            <div>
+              <label for="property_type">Property Type</label>
+              <select id="property_type" name="property_type" required>
+                <option value="" disabled selected>Select one</option>
+                <option>Single-Family Rental</option>
+                <option>Small Multifamily (2&ndash;4 Units)</option>
+                <option>Multifamily (5+ Units)</option>
+                <option>Mixed-Use</option>
+                <option>Commercial</option>
+                <option>Other</option>
+              </select>
+            </div>
           </div>
-          <div>
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" autocomplete="tel" required>
+          <div class="form-row">
+            <div>
+              <label for="property_value">Est. Purchase Price / Value</label>
+              <input type="text" id="property_value" name="property_value" placeholder="e.g. $450,000" required>
+            </div>
+            <div>
+              <label for="loan_amount">Est. Loan Amount</label>
+              <input type="text" id="loan_amount" name="loan_amount" placeholder="e.g. $360,000" required>
+            </div>
           </div>
         </div>
 
-        <label for="loan_type">Loan Program</label>
-        <select id="loan_type" name="loan_type" required>
-          <option value="" disabled selected>Select the program that fits your deal</option>
-          <option>DSCR Loans</option>
-          <option>Bank Statement Loans</option>
-          <option>Self-Employed Investor Programs</option>
-          <option>Portfolio &amp; High-Net-Worth Programs</option>
-          <option>Hard Money Loans</option>
-          <option>Fix &amp; Flip Loans</option>
-          <option>Bridge Loans</option>
-          <option>Cash-Out Refinancing</option>
-          <option>Seller Carry-Back Financing</option>
-          <option>Construction Loans</option>
-          <option>Commercial Loans</option>
-          <option>No-Ratio &amp; Distressed Asset Rescue</option>
-          <option>Not sure yet</option>
-        </select>
+        <div class="wizard-step" data-step="3">
+          <p class="wizard-step-title">A bit about your situation</p>
+          <div class="form-row">
+            <div>
+              <label for="credit_range">Est. Credit Score</label>
+              <select id="credit_range" name="credit_range" required>
+                <option value="" disabled selected>Select a range</option>
+                <option>760+</option>
+                <option>720&ndash;759</option>
+                <option>680&ndash;719</option>
+                <option>640&ndash;679</option>
+                <option>Below 640</option>
+                <option>Not sure</option>
+              </select>
+            </div>
+            <div>
+              <label for="timeline">Timeline</label>
+              <select id="timeline" name="timeline" required>
+                <option value="" disabled selected>Select one</option>
+                <option>As soon as possible</option>
+                <option>1&ndash;3 months</option>
+                <option>3&ndash;6 months</option>
+                <option>Just exploring options</option>
+              </select>
+            </div>
+          </div>
+          <label for="message">Anything else we should know? (optional)</label>
+          <textarea id="message" name="message" rows="3" placeholder="Purchase price, timeline, or questions…"></textarea>
+        </div>
 
-        <label for="message">Tell us about the property or deal</label>
-        <textarea id="message" name="message" rows="4" minlength="15" placeholder="Purchase price, property type, timeline, loan amount…" required></textarea>
+        <div class="wizard-step" data-step="4">
+          <p class="wizard-step-title">Almost done — how do we reach you?</p>
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" autocomplete="name" required>
+          <div class="form-row">
+            <div>
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required>
+            </div>
+            <div>
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" required>
+            </div>
+          </div>
+        </div>
 
-        <button type="submit" class="btn btn-primary btn-block btn-apply">Send Inquiry</button>
+        <div class="wizard-actions">
+          <button type="button" class="btn btn-secondary" id="wizardBackBtn" style="display:none;">Back</button>
+          <button type="button" class="btn btn-primary btn-apply" id="wizardNextBtn">Continue<svg viewBox="0 0 14 14" fill="none" width="13" height="13" class="btn-arrow" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+          <button type="submit" class="btn btn-primary btn-apply" id="wizardSubmitBtn" style="display:none;">Submit Application</button>
+        </div>
         <p class="form-trust">🔒 Your info goes only to our team — never sold, never shared. No obligation to proceed.</p>
         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
       </form>

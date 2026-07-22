@@ -39,14 +39,68 @@ if (prefersReducedMotion) {
   revealTargets.forEach((el) => observer.observe(el));
 }
 
-// Contact form submission via Web3Forms
+// Application wizard — step navigation
 const form = document.getElementById('contact-form');
 const status = document.getElementById('form-status');
 const formLoadedAt = document.getElementById('form_loaded_at');
 if (formLoadedAt) formLoadedAt.value = String(Date.now());
 
+const wizardSteps = Array.from(form.querySelectorAll('.wizard-step'));
+const wizardTotalSteps = wizardSteps.length;
+const wizardProgressFill = document.getElementById('wizardProgressFill');
+const wizardStepLabel = document.getElementById('wizardStepLabel');
+const wizardBackBtn = document.getElementById('wizardBackBtn');
+const wizardNextBtn = document.getElementById('wizardNextBtn');
+const wizardSubmitBtn = document.getElementById('wizardSubmitBtn');
+let wizardCurrentStep = 1;
+
+function updateWizardUI() {
+  wizardSteps.forEach((step) => {
+    step.classList.toggle('active', Number(step.dataset.step) === wizardCurrentStep);
+  });
+  wizardProgressFill.style.width = ((wizardCurrentStep / wizardTotalSteps) * 100) + '%';
+  wizardStepLabel.textContent = `Step ${wizardCurrentStep} of ${wizardTotalSteps}`;
+  wizardBackBtn.style.display = wizardCurrentStep === 1 ? 'none' : 'inline-flex';
+  wizardNextBtn.style.display = wizardCurrentStep === wizardTotalSteps ? 'none' : 'inline-flex';
+  wizardSubmitBtn.style.display = wizardCurrentStep === wizardTotalSteps ? 'inline-flex' : 'none';
+}
+
+function wizardStepIsValid(stepEl) {
+  const fields = stepEl.querySelectorAll('input, select, textarea');
+  for (const field of fields) {
+    if (!field.checkValidity()) {
+      field.reportValidity();
+      return false;
+    }
+  }
+  return true;
+}
+
+wizardNextBtn.addEventListener('click', () => {
+  const stepEl = wizardSteps[wizardCurrentStep - 1];
+  if (!wizardStepIsValid(stepEl)) return;
+  if (wizardCurrentStep < wizardTotalSteps) {
+    wizardCurrentStep++;
+    updateWizardUI();
+    form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+});
+
+wizardBackBtn.addEventListener('click', () => {
+  if (wizardCurrentStep > 1) {
+    wizardCurrentStep--;
+    updateWizardUI();
+  }
+});
+
+updateWizardUI();
+
+// Contact form submission via Web3Forms
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
+
+  const finalStep = wizardSteps[wizardCurrentStep - 1];
+  if (!wizardStepIsValid(finalStep)) return;
 
   if (form.botcheck.checked) return; // spam honeypot
 
@@ -58,8 +112,7 @@ form.addEventListener('submit', async (event) => {
     return;
   }
 
-  const submitBtn = form.querySelector('button[type="submit"]');
-  submitBtn.disabled = true;
+  wizardSubmitBtn.disabled = true;
   status.textContent = 'Sending…';
   status.className = 'form-status';
 
@@ -75,6 +128,8 @@ form.addEventListener('submit', async (event) => {
       status.textContent = "Thanks — we'll be in touch within one business day.";
       status.className = 'form-status success';
       form.reset();
+      wizardCurrentStep = 1;
+      updateWizardUI();
     } else {
       throw new Error(result.message || 'Submission failed');
     }
@@ -82,6 +137,6 @@ form.addEventListener('submit', async (event) => {
     status.textContent = 'Something went wrong. Please call 919-395-2411 or try again.';
     status.className = 'form-status error';
   } finally {
-    submitBtn.disabled = false;
+    wizardSubmitBtn.disabled = false;
   }
 });

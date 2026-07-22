@@ -8,6 +8,10 @@
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://timberlending.com/">
 <meta name="theme-color" content="#2b1d13">
+<meta name="geo.region" content="US-NC">
+<meta name="geo.placename" content="Raleigh, North Carolina">
+<meta name="geo.position" content="35.8536;-78.6427">
+<meta name="ICBM" content="35.8536, -78.6427">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Timber Lending">
@@ -43,7 +47,15 @@
     "addressRegion": "NC",
     "addressCountry": "US"
   },
-  "areaServed": "US",
+  "areaServed": [
+    { "@type": "City", "name": "Raleigh, NC" },
+    { "@type": "City", "name": "Durham, NC" },
+    { "@type": "City", "name": "Cary, NC" },
+    { "@type": "City", "name": "Chapel Hill, NC" },
+    { "@type": "City", "name": "Apex, NC" },
+    { "@type": "City", "name": "Wake Forest, NC" },
+    { "@type": "Country", "name": "United States" }
+  ],
   "founder": {
     "@type": "Person",
     "name": "Joshua Schlitt"
@@ -132,7 +144,7 @@
 
     <div class="header-actions">
       <a href="tel:9193952411" class="header-phone">919&#8209;395&#8209;2411</a>
-      <a href="#contact" class="btn btn-primary btn-sm"><span class="btn-full">Get Pre-Qualified</span><span class="btn-short">Apply</span></a>
+      <a href="#contact" class="btn btn-primary btn-sm btn-apply"><span class="btn-full">Get Pre-Qualified</span><span class="btn-short">Apply</span></a>
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation menu">
         <span></span><span></span><span></span>
       </button>
@@ -151,9 +163,16 @@
         <h1>Loans for real&nbsp;estate investors.</h1>
         <p class="hero-lede">Bank said no? We fund DSCR, bridge, and hard money loans on rental and investment properties — approved on the deal, not your paycheck. No W-2 required.</p>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Get Pre-Qualified</a>
+          <a href="#contact" class="btn btn-primary btn-apply">Get Pre-Qualified</a>
           <a href="#programs" class="btn btn-secondary">See Loan Programs</a>
         </div>
+        <p class="hero-trust">
+          <span>⏱ Takes 2 minutes</span>
+          <span class="trust-dot" aria-hidden="true"></span>
+          <span>Free, no obligation</span>
+          <span class="trust-dot" aria-hidden="true"></span>
+          <span>We respond within 1 business day</span>
+        </p>
       </div>
 
       <div class="hero-figure" aria-hidden="true">
@@ -468,23 +487,25 @@
         <input type="hidden" name="access_key" value="ed79c13b-c08c-4420-9292-2c9199e177c3">
         <input type="hidden" name="subject" value="New inquiry from Timber Lending website">
         <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="form_loaded_at" id="form_loaded_at" value="">
 
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required>
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" autocomplete="name" required>
 
         <div class="form-row">
           <div>
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" autocomplete="email" required>
           </div>
           <div>
             <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone">
+            <input type="tel" id="phone" name="phone" autocomplete="tel" required>
           </div>
         </div>
 
         <label for="loan_type">Loan Program</label>
-        <select id="loan_type" name="loan_type">
+        <select id="loan_type" name="loan_type" required>
+          <option value="" disabled selected>Select the program that fits your deal</option>
           <option>DSCR Loans</option>
           <option>Bank Statement Loans</option>
           <option>Self-Employed Investor Programs</option>
@@ -501,9 +522,10 @@
         </select>
 
         <label for="message">Tell us about the property or deal</label>
-        <textarea id="message" name="message" rows="4"></textarea>
+        <textarea id="message" name="message" rows="4" minlength="15" placeholder="Purchase price, property type, timeline, loan amount…" required></textarea>
 
-        <button type="submit" class="btn btn-primary btn-block">Send Inquiry</button>
+        <button type="submit" class="btn btn-primary btn-block btn-apply">Send Inquiry</button>
+        <p class="form-trust">🔒 Your info goes only to our team — never sold, never shared. No obligation to proceed.</p>
         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
       </form>
     </div>

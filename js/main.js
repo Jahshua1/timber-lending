@@ -42,11 +42,21 @@ if (prefersReducedMotion) {
 // Contact form submission via Web3Forms
 const form = document.getElementById('contact-form');
 const status = document.getElementById('form-status');
+const formLoadedAt = document.getElementById('form_loaded_at');
+if (formLoadedAt) formLoadedAt.value = String(Date.now());
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
 
   if (form.botcheck.checked) return; // spam honeypot
+
+  // Reject submissions completed implausibly fast (bots filling forms instantly)
+  const loadedAt = Number(formLoadedAt.value);
+  if (loadedAt && Date.now() - loadedAt < 3000) {
+    status.textContent = "Thanks — we'll be in touch within one business day.";
+    status.className = 'form-status success';
+    return;
+  }
 
   const submitBtn = form.querySelector('button[type="submit"]');
   submitBtn.disabled = true;

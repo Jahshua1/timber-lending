@@ -154,7 +154,7 @@
 
     <div class="header-actions">
       <a href="tel:9193952411" class="header-phone">919&#8209;395&#8209;2411</a>
-      <a href="#contact" class="btn btn-primary btn-sm btn-apply"><span class="btn-full">Get Pre-Qualified</span><span class="btn-short">Apply</span><svg viewBox="0 0 14 14" fill="none" width="12" height="12" class="btn-arrow" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+      <a href="#contact" class="btn btn-primary btn-sm btn-apply js-apply-trigger"><span class="btn-full">Get Pre-Qualified</span><span class="btn-short">Apply</span><svg viewBox="0 0 14 14" fill="none" width="12" height="12" class="btn-arrow" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation menu">
         <span></span><span></span><span></span>
       </button>
@@ -173,7 +173,7 @@
         <h1>Loans for real&nbsp;estate investors.</h1>
         <p class="hero-lede">Bank said no? We fund DSCR, bridge, and hard money loans on rental and investment properties — approved on the deal, not your paycheck. No W-2 required.</p>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary btn-apply">Get Pre-Qualified<svg viewBox="0 0 14 14" fill="none" width="13" height="13" class="btn-arrow" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+          <a href="#contact" class="btn btn-primary btn-apply js-apply-trigger">Get Pre-Qualified<svg viewBox="0 0 14 14" fill="none" width="13" height="13" class="btn-arrow" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
           <a href="#programs" class="btn btn-secondary">See Loan Programs</a>
         </div>
         <p class="hero-trust">
@@ -493,134 +493,154 @@
         </dl>
       </div>
 
-      <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
-        <input type="hidden" name="access_key" value="ed79c13b-c08c-4420-9292-2c9199e177c3">
-        <input type="hidden" name="subject" value="New application from Timber Lending website">
-        <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" autocomplete="off">
-        <input type="hidden" name="form_loaded_at" id="form_loaded_at" value="">
-
-        <div class="wizard-progress" aria-hidden="true"><div class="wizard-progress-fill" id="wizardProgressFill"></div></div>
-        <p class="wizard-step-label" id="wizardStepLabel">Step 1 of 4</p>
-
-        <div class="wizard-step active" data-step="1">
-          <p class="wizard-step-title">What are you financing?</p>
-          <label for="loan_type">Loan Program</label>
-          <select id="loan_type" name="loan_type" required>
-            <option value="" disabled selected>Select the program that fits your deal</option>
-            <option>DSCR Loans</option>
-            <option>Bank Statement Loans</option>
-            <option>Self-Employed Investor Programs</option>
-            <option>Portfolio &amp; High-Net-Worth Programs</option>
-            <option>Hard Money Loans</option>
-            <option>Fix &amp; Flip Loans</option>
-            <option>Bridge Loans</option>
-            <option>Cash-Out Refinancing</option>
-            <option>Seller Carry-Back Financing</option>
-            <option>Construction Loans</option>
-            <option>Commercial Loans</option>
-            <option>No-Ratio &amp; Distressed Asset Rescue</option>
-            <option>Not sure yet</option>
-          </select>
-          <label for="purpose">Purchase or Refinance</label>
-          <select id="purpose" name="purpose" required>
-            <option value="" disabled selected>Select one</option>
-            <option>Purchase</option>
-            <option>Refinance</option>
-            <option>Cash-Out Refinance</option>
-            <option>Not sure yet</option>
-          </select>
-        </div>
-
-        <div class="wizard-step" data-step="2">
-          <p class="wizard-step-title">Tell us about the property</p>
-          <div class="form-row">
-            <div>
-              <label for="property_state">Property State</label>
-              <input type="text" id="property_state" name="property_state" placeholder="e.g. NC" required>
-            </div>
-            <div>
-              <label for="property_type">Property Type</label>
-              <select id="property_type" name="property_type" required>
-                <option value="" disabled selected>Select one</option>
-                <option>Single-Family Rental</option>
-                <option>Small Multifamily (2&ndash;4 Units)</option>
-                <option>Multifamily (5+ Units)</option>
-                <option>Mixed-Use</option>
-                <option>Commercial</option>
-                <option>Other</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-row">
-            <div>
-              <label for="property_value">Est. Purchase Price / Value</label>
-              <input type="text" id="property_value" name="property_value" placeholder="e.g. $450,000" required>
-            </div>
-            <div>
-              <label for="loan_amount">Est. Loan Amount</label>
-              <input type="text" id="loan_amount" name="loan_amount" placeholder="e.g. $360,000" required>
-            </div>
-          </div>
-        </div>
-
-        <div class="wizard-step" data-step="3">
-          <p class="wizard-step-title">A bit about your situation</p>
-          <div class="form-row">
-            <div>
-              <label for="credit_range">Est. Credit Score</label>
-              <select id="credit_range" name="credit_range" required>
-                <option value="" disabled selected>Select a range</option>
-                <option>760+</option>
-                <option>720&ndash;759</option>
-                <option>680&ndash;719</option>
-                <option>640&ndash;679</option>
-                <option>Below 640</option>
-                <option>Not sure</option>
-              </select>
-            </div>
-            <div>
-              <label for="timeline">Timeline</label>
-              <select id="timeline" name="timeline" required>
-                <option value="" disabled selected>Select one</option>
-                <option>As soon as possible</option>
-                <option>1&ndash;3 months</option>
-                <option>3&ndash;6 months</option>
-                <option>Just exploring options</option>
-              </select>
-            </div>
-          </div>
-          <label for="message">Anything else we should know? (optional)</label>
-          <textarea id="message" name="message" rows="3" placeholder="Purchase price, timeline, or questions…"></textarea>
-        </div>
-
-        <div class="wizard-step" data-step="4">
-          <p class="wizard-step-title">Almost done — how do we reach you?</p>
-          <label for="name">Full Name</label>
-          <input type="text" id="name" name="name" autocomplete="name" required>
-          <div class="form-row">
-            <div>
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" autocomplete="email" required>
-            </div>
-            <div>
-              <label for="phone">Phone</label>
-              <input type="tel" id="phone" name="phone" autocomplete="tel" required>
-            </div>
-          </div>
-        </div>
-
-        <div class="wizard-actions">
-          <button type="button" class="btn btn-secondary" id="wizardBackBtn" style="display:none;">Back</button>
-          <button type="button" class="btn btn-primary btn-apply" id="wizardNextBtn">Continue<svg viewBox="0 0 14 14" fill="none" width="13" height="13" class="btn-arrow" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
-          <button type="submit" class="btn btn-primary btn-apply" id="wizardSubmitBtn" style="display:none;">Submit Application</button>
-        </div>
-        <p class="form-trust">🔒 Your info goes only to our team — never sold, never shared. No obligation to proceed.</p>
-        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-      </form>
+      <div class="contact-cta">
+        <p class="cta-eyebrow">Application</p>
+        <h3>Ready when you are.</h3>
+        <p class="cta-copy">A few quick questions about the deal — no SSN, no documents, no commitment yet. Just enough for us to tell you what it'll take to fund it.</p>
+        <ul class="cta-points">
+          <li>⏱ Takes 2 minutes</li>
+          <li>🔒 Free, no obligation</li>
+          <li>📞 We respond within 1 business day</li>
+        </ul>
+        <button type="button" class="btn btn-primary btn-apply btn-block js-apply-trigger">Start Application<svg viewBox="0 0 14 14" fill="none" width="13" height="13" class="btn-arrow" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+      </div>
     </div>
   </section>
 
 </main>
+
+<!-- APPLICATION MODAL -->
+<div class="modal-overlay" id="applyModalOverlay" role="dialog" aria-modal="true" aria-labelledby="applyModalTitle">
+  <div class="modal-box" id="applyModalBox">
+    <button type="button" class="modal-close" id="applyModalCloseBtn" aria-label="Close application form">&#x2715;</button>
+    <h2 id="applyModalTitle" class="sr-only">Loan Pre-Qualification Application</h2>
+
+    <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+      <input type="hidden" name="access_key" value="ed79c13b-c08c-4420-9292-2c9199e177c3">
+      <input type="hidden" name="subject" value="New application from Timber Lending website">
+      <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="form_loaded_at" id="form_loaded_at" value="">
+
+      <div class="wizard-progress" aria-hidden="true"><div class="wizard-progress-fill" id="wizardProgressFill"></div></div>
+      <p class="wizard-step-label" id="wizardStepLabel">Step 1 of 4</p>
+
+      <div class="wizard-step active" data-step="1">
+        <p class="wizard-step-title">What are you financing?</p>
+        <label for="loan_type">Loan Program</label>
+        <select id="loan_type" name="loan_type" required>
+          <option value="" disabled selected>Select the program that fits your deal</option>
+          <option>DSCR Loans</option>
+          <option>Bank Statement Loans</option>
+          <option>Self-Employed Investor Programs</option>
+          <option>Portfolio &amp; High-Net-Worth Programs</option>
+          <option>Hard Money Loans</option>
+          <option>Fix &amp; Flip Loans</option>
+          <option>Bridge Loans</option>
+          <option>Cash-Out Refinancing</option>
+          <option>Seller Carry-Back Financing</option>
+          <option>Construction Loans</option>
+          <option>Commercial Loans</option>
+          <option>No-Ratio &amp; Distressed Asset Rescue</option>
+          <option>Not sure yet</option>
+        </select>
+        <label for="purpose">Purchase or Refinance</label>
+        <select id="purpose" name="purpose" required>
+          <option value="" disabled selected>Select one</option>
+          <option>Purchase</option>
+          <option>Refinance</option>
+          <option>Cash-Out Refinance</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+
+      <div class="wizard-step" data-step="2">
+        <p class="wizard-step-title">Tell us about the property</p>
+        <div class="form-row">
+          <div>
+            <label for="property_state">Property State</label>
+            <input type="text" id="property_state" name="property_state" placeholder="e.g. NC" required>
+          </div>
+          <div>
+            <label for="property_type">Property Type</label>
+            <select id="property_type" name="property_type" required>
+              <option value="" disabled selected>Select one</option>
+              <option>Single-Family Rental</option>
+              <option>Small Multifamily (2&ndash;4 Units)</option>
+              <option>Multifamily (5+ Units)</option>
+              <option>Mixed-Use</option>
+              <option>Commercial</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label for="property_value">Est. Purchase Price / Value</label>
+            <input type="text" id="property_value" name="property_value" placeholder="e.g. $450,000" required>
+          </div>
+          <div>
+            <label for="loan_amount">Est. Loan Amount</label>
+            <input type="text" id="loan_amount" name="loan_amount" placeholder="e.g. $360,000" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="wizard-step" data-step="3">
+        <p class="wizard-step-title">A bit about your situation</p>
+        <div class="form-row">
+          <div>
+            <label for="credit_range">Est. Credit Score</label>
+            <select id="credit_range" name="credit_range" required>
+              <option value="" disabled selected>Select a range</option>
+              <option>760+</option>
+              <option>720&ndash;759</option>
+              <option>680&ndash;719</option>
+              <option>640&ndash;679</option>
+              <option>Below 640</option>
+              <option>Not sure</option>
+            </select>
+          </div>
+          <div>
+            <label for="timeline">Timeline</label>
+            <select id="timeline" name="timeline" required>
+              <option value="" disabled selected>Select one</option>
+              <option>As soon as possible</option>
+              <option>1&ndash;3 months</option>
+              <option>3&ndash;6 months</option>
+              <option>Just exploring options</option>
+            </select>
+          </div>
+        </div>
+        <label for="message">Anything else we should know? (optional)</label>
+        <textarea id="message" name="message" rows="3" placeholder="Purchase price, timeline, or questions…"></textarea>
+      </div>
+
+      <div class="wizard-step" data-step="4">
+        <p class="wizard-step-title">Almost done — how do we reach you?</p>
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" autocomplete="name" required>
+        <div class="form-row">
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+          </div>
+          <div>
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="wizard-actions">
+        <button type="button" class="btn btn-secondary" id="wizardBackBtn" style="display:none;">Back</button>
+        <button type="button" class="btn btn-primary btn-apply" id="wizardNextBtn">Continue<svg viewBox="0 0 14 14" fill="none" width="13" height="13" class="btn-arrow" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <button type="submit" class="btn btn-primary btn-apply" id="wizardSubmitBtn" style="display:none;">Submit Application</button>
+      </div>
+      <p class="form-trust">🔒 Your info goes only to our team — never sold, never shared. No obligation to proceed.</p>
+      <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
 
 <footer class="site-footer">
   <div class="container footer-grid">

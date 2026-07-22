@@ -522,6 +522,19 @@ h3 { font-size: 1.15rem; margin-bottom: 8px; }
 .contact-details a { text-decoration: none; }
 .contact-details a:hover { color: var(--grain-line); }
 
+.contact-cta {
+  background: var(--pine);
+  color: var(--ink);
+  padding: 40px;
+  border-radius: 2px;
+  border: 1px solid var(--seam);
+  align-self: start;
+}
+.cta-eyebrow { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--heartwood-dark); margin: 0 0 10px; }
+.contact-cta h3 { font-size: 1.5rem; }
+.cta-copy { color: var(--bark); margin: 0 0 24px; max-width: 40ch; }
+.cta-points { list-style: none; margin: 0 0 28px; padding: 0; display: flex; flex-direction: column; gap: 10px; font-family: var(--font-mono); font-size: 0.85rem; color: var(--bark); }
+
 .contact-form {
   background: var(--pine);
   color: var(--ink);
@@ -562,6 +575,60 @@ h3 { font-size: 1.15rem; margin-bottom: 8px; }
 .wizard-actions .btn { flex: 1; }
 .form-status.success { color: #2f6b3a; }
 .form-status.error { color: var(--heartwood-dark); }
+
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+
+/* ---------- Application Modal ---------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(28,18,11,0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: translateY(16px);
+  opacity: 0;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  border-radius: 2px;
+}
+.modal-overlay.open .modal-box { transform: translateY(0); opacity: 1; }
+.modal-overlay .contact-form { border-radius: 2px; margin: 0; }
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 1;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--pine-alt);
+  border: 1px solid var(--seam);
+  border-radius: 50%;
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.modal-close:hover { background: var(--seam); }
+@media (max-width: 480px) {
+  .modal-overlay { padding: 0; }
+  .modal-box { max-width: 100%; max-height: 100vh; height: 100%; border-radius: 0; }
+  .modal-overlay .contact-form { border-radius: 0; min-height: 100%; }
+}
 
 /* ---------- Footer ---------- */
 .site-footer { background: var(--walnut-deep); color: rgba(255,255,255,0.75); padding-top: 64px; }

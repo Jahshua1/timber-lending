@@ -39,6 +39,38 @@ if (prefersReducedMotion) {
   revealTargets.forEach((el) => observer.observe(el));
 }
 
+// Application modal — open/close
+const applyOverlay = document.getElementById('applyModalOverlay');
+const applyModalBox = document.getElementById('applyModalBox');
+const applyModalCloseBtn = document.getElementById('applyModalCloseBtn');
+
+function openApplyModal(event) {
+  if (event) event.preventDefault();
+  applyOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  if (formLoadedAt) formLoadedAt.value = String(Date.now());
+  wizardCurrentStep = 1;
+  updateWizardUI();
+  const firstField = wizardSteps[0].querySelector('input, select, textarea');
+  if (firstField) firstField.focus();
+}
+
+function closeApplyModal() {
+  applyOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.js-apply-trigger').forEach((el) => {
+  el.addEventListener('click', openApplyModal);
+});
+applyModalCloseBtn.addEventListener('click', closeApplyModal);
+applyOverlay.addEventListener('click', (event) => {
+  if (event.target === applyOverlay) closeApplyModal();
+});
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && applyOverlay.classList.contains('open')) closeApplyModal();
+});
+
 // Application wizard — step navigation
 const form = document.getElementById('contact-form');
 const status = document.getElementById('form-status');
@@ -109,6 +141,7 @@ form.addEventListener('submit', async (event) => {
   if (loadedAt && Date.now() - loadedAt < 3000) {
     status.textContent = "Thanks — we'll be in touch within one business day.";
     status.className = 'form-status success';
+    setTimeout(closeApplyModal, 2500);
     return;
   }
 
@@ -130,6 +163,7 @@ form.addEventListener('submit', async (event) => {
       form.reset();
       wizardCurrentStep = 1;
       updateWizardUI();
+      setTimeout(closeApplyModal, 2500);
     } else {
       throw new Error(result.message || 'Submission failed');
     }

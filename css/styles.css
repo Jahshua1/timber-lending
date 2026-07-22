@@ -678,8 +678,8 @@ h3 { font-size: 1.15rem; margin-bottom: 8px; }
 .wizard-success h3 { font-size: 1.4rem; margin-bottom: 12px; }
 .success-copy { color: var(--bark); max-width: 38ch; margin: 0 0 24px; }
 .success-copy a { color: var(--heartwood-dark); }
-.success-actions { display: flex; gap: 12px; width: 100%; max-width: 320px; margin-bottom: 18px; }
-.success-actions .btn { flex: 1; }
+.success-actions { display: flex; gap: 10px; width: 100%; max-width: 360px; margin-bottom: 18px; flex-wrap: wrap; }
+.success-actions .btn { flex: 1 1 90px; padding-left: 14px; padding-right: 14px; }
 .success-done {
   background: none;
   border: none;

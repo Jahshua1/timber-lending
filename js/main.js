@@ -39,6 +39,9 @@ if (prefersReducedMotion) {
   revealTargets.forEach((el) => observer.observe(el));
 }
 
+// Application modal + wizard — only present on pages that include the modal markup
+if (document.getElementById('contact-form')) {
+
 // Application modal — open/close
 const applyOverlay = document.getElementById('applyModalOverlay');
 const applyModalBox = document.getElementById('applyModalBox');
@@ -186,3 +189,5 @@ form.addEventListener('submit', async (event) => {
     wizardSubmitBtn.disabled = false;
   }
 });
+
+}

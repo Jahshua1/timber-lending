@@ -43,11 +43,24 @@ if (prefersReducedMotion) {
 const applyOverlay = document.getElementById('applyModalOverlay');
 const applyModalBox = document.getElementById('applyModalBox');
 const applyModalCloseBtn = document.getElementById('applyModalCloseBtn');
+const wizardSuccess = document.getElementById('wizardSuccess');
+const wizardDoneBtn = document.getElementById('wizardDoneBtn');
+
+function showWizardForm() {
+  form.hidden = false;
+  wizardSuccess.hidden = true;
+}
+
+function showWizardSuccess() {
+  form.hidden = true;
+  wizardSuccess.hidden = false;
+}
 
 function openApplyModal(event) {
   if (event) event.preventDefault();
   applyOverlay.classList.add('open');
   document.body.style.overflow = 'hidden';
+  showWizardForm();
   if (formLoadedAt) formLoadedAt.value = String(Date.now());
   wizardCurrentStep = 1;
   updateWizardUI();
@@ -64,6 +77,7 @@ document.querySelectorAll('.js-apply-trigger').forEach((el) => {
   el.addEventListener('click', openApplyModal);
 });
 applyModalCloseBtn.addEventListener('click', closeApplyModal);
+wizardDoneBtn.addEventListener('click', closeApplyModal);
 applyOverlay.addEventListener('click', (event) => {
   if (event.target === applyOverlay) closeApplyModal();
 });
@@ -77,6 +91,7 @@ const status = document.getElementById('form-status');
 const formLoadedAt = document.getElementById('form_loaded_at');
 if (formLoadedAt) formLoadedAt.value = String(Date.now());
 
+const wizardBody = document.querySelector('.wizard-body');
 const wizardSteps = Array.from(form.querySelectorAll('.wizard-step'));
 const wizardTotalSteps = wizardSteps.length;
 const wizardProgressFill = document.getElementById('wizardProgressFill');
@@ -95,6 +110,7 @@ function updateWizardUI() {
   wizardBackBtn.style.display = wizardCurrentStep === 1 ? 'none' : 'inline-flex';
   wizardNextBtn.style.display = wizardCurrentStep === wizardTotalSteps ? 'none' : 'inline-flex';
   wizardSubmitBtn.style.display = wizardCurrentStep === wizardTotalSteps ? 'inline-flex' : 'none';
+  wizardBody.scrollTop = 0;
 }
 
 function wizardStepIsValid(stepEl) {
@@ -114,7 +130,6 @@ wizardNextBtn.addEventListener('click', () => {
   if (wizardCurrentStep < wizardTotalSteps) {
     wizardCurrentStep++;
     updateWizardUI();
-    form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 });
 
@@ -139,9 +154,7 @@ form.addEventListener('submit', async (event) => {
   // Reject submissions completed implausibly fast (bots filling forms instantly)
   const loadedAt = Number(formLoadedAt.value);
   if (loadedAt && Date.now() - loadedAt < 3000) {
-    status.textContent = "Thanks — we'll be in touch within one business day.";
-    status.className = 'form-status success';
-    setTimeout(closeApplyModal, 2500);
+    showWizardSuccess();
     return;
   }
 
@@ -158,12 +171,11 @@ form.addEventListener('submit', async (event) => {
     const result = await response.json();
 
     if (response.status === 200 && result.success) {
-      status.textContent = "Thanks — we'll be in touch within one business day.";
-      status.className = 'form-status success';
+      status.textContent = '';
       form.reset();
       wizardCurrentStep = 1;
       updateWizardUI();
-      setTimeout(closeApplyModal, 2500);
+      showWizardSuccess();
     } else {
       throw new Error(result.message || 'Submission failed');
     }
